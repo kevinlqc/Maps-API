@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        /* Good basic settings for a mobile map, but for our purposes, we'll design for desktop. */
+        /*
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+	  
+	  */
+        
+        #map_canvas {
+            height: 480px;
+            /* has to have the height property to be shown on web */
+            width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function initMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(53.541262, -113.493329),
+                zoom: 13, // depending on the resolution of your location, can go 1 to 23
+                mapTypeId: google.maps.MapTypeId.ROADMAP //ROADMAP, HYBRID, TERRAIN, SATELLITE
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            var myBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(53.535946, -113.509197),
+                new google.maps.LatLng(53.547091, -113.483148)
+            );
+
+            var rectOptions = {
+                strokeColor: "#ff0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 3,
+                fillColor: "#ff0000",
+                fillOpacity: 0.35,
+                map: map,
+                bounds: myBounds
+            }
+
+            var myRectangle = new google.maps.Rectangle(rectOptions);
+
+
+
+        }; // end initialize
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6vn5sYLZN1z_nGziA_KVqku2KktRzTZ8&callback=initMap" async defer></script>
+
+</head>
+
+<body>
+    <div id="map_canvas"></div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        /* Good basic settings for a mobile map, but for our purposes, we'll design for desktop. */
+        /*
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+	  
+	  */
+        
+        #map_canvas {
+            height: 480px;
+            /* has to have the height property to be shown on web */
+            width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function gotoPlaceOne() {
+            var mapOptions = {
+                center: new google.maps.LatLng(21.453629, -157.769798),
+                zoom: 18, // depending on the resolution of your location, can go 1 to 23
+                mapTypeId: google.maps.MapTypeId.HYBRID //ROADMAP, HYBRID, TERRAIN, SATELLITE
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+
+
+        }; // end initialize
+
+        function gotoPlaceTwo() {
+            var mapOptions = {
+                center: new google.maps.LatLng(27.729403, 112.001831),
+                zoom: 18, // depending on the resolution of your location, can go 1 to 23
+                mapTypeId: google.maps.MapTypeId.HYBRID //ROADMAP, HYBRID, TERRAIN, SATELLITE
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+
+
+        }; // end initialize
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6vn5sYLZN1z_nGziA_KVqku2KktRzTZ8&callback=gotoPlaceOne" async defer></script>
+
+</head>
+
+<body>
+    <p>
+        <a href="javascript:gotoPlaceOne()">Place One</a> | <a href="javascript:gotoPlaceTwo()">Place Two</a>
+    </p>
+
+    <div id="map_canvas"></div>
+</body>
+
+</html>

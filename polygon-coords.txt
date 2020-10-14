@@ -1,0 +1,8 @@
+var edmDowntownCoords = [
+          new google.maps.LatLng(53.539211, -113.486495), // SE
+          new google.maps.LatLng(53.531057, -113.496276), // S
+          new google.maps.LatLng(53.535946, -113.509197), // SW
+          new google.maps.LatLng(53.54732, -113.508425), // NW
+          new google.maps.LatLng(53.547091, -113.483148) // NE
+
+        ];

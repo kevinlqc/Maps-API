@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        /* Good basic settings for a mobile map, but for our purposes, we'll design for desktop. */
+        /*
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+	  
+	  */
+        
+        #map_canvas {
+            height: 480px;
+            /* has to have the height property to be shown on web */
+            width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function initMap() {
+            var mapOptions = {
+                center: new google.maps.LatLng(53.570482, -113.500005),
+                zoom: 13, // depending on the resolution of your location, can go 1 to 23
+                mapTypeId: google.maps.MapTypeId.ROADMAP //ROADMAP, HYBRID, TERRAIN, SATELLITE
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            var myDuckMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(53.570482, -113.500005),
+                map: map,
+                icon: "icons/beergarden.png",
+                title: "The Duck"
+            })
+
+            //step1: define the InfoWindow
+            var myDuckInfoWindow = new google.maps.InfoWindow({
+                content: '<div style="width:300px;height:120px;font-family:arial" class="clear-fix"><img src ="duck.jpg" alt = "store" style = "width: 150px;float: left;margin-right:10px" ><h3> The Blind Duck</h3><p>If you happen to be around Giant Baseball Bat, visit this bar.Perfectly cooked duck might be what you need.Most likely, you\'ll come back to The Blind Duck later to degust delicious beer.</p></div>'
+
+                // create a pretty info window with an image and whatever CSS will work
+            });
+
+            // step2: add an event listener to grab a user event and open the infoWindow
+            google.maps.event.addListener(myDuckMarker, 'click', function() {
+                myDuckInfoWindow.open(map, myDuckMarker);
+            });
+
+        }; // end initialize
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6vn5sYLZN1z_nGziA_KVqku2KktRzTZ8&callback=initMap" async defer></script>
+
+</head>
+
+<body>
+    <div id="map_canvas"></div>
+
+</body>
+
+</html>
+
+<!-- "
+<div style=\ "width:300px;height:150px;font-family:arial\">
+    <h2>Heading Here</h2>
+    <p>Content Here</p>
+</div>" -->
